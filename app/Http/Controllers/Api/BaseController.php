@@ -25,7 +25,9 @@ class BaseController extends Controller
             'data' => $result,
         ];
 
-        return response()->json($response, $code, ['Content-Type' => 'application/json;charset=utf-8']);
+        return response()->json($response, $code, [
+            'Content-Type' => 'application/json;charset=utf-8',
+        ]);
     }
 
 
@@ -52,6 +54,9 @@ class BaseController extends Controller
             $response['errors'] = $errorMessages;
         }
 
-        return response()->json($response, $code, ['Content-Type' => 'application/json;charset=utf-8']);
+        return response()->json($response, $code, [
+            'Content-Type' => 'application/json;charset=utf-8',
+            'Access-Control-Allow-Origin' => '*'
+        ]);
     }
 }
