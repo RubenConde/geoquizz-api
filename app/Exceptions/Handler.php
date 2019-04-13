@@ -2,8 +2,17 @@
 
 namespace App\Exceptions;
 
+use App\Http\Controllers\Api\BaseController;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use InvalidArgumentException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\URL;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -29,8 +38,9 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param Exception $exception
      * @return void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
@@ -40,12 +50,29 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param Exception $exception
+     * @return Response
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
+            $baseController = new BaseController();
+            return $baseController->sendError('Information not found for: ' . URL::full());
+        }
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            $baseController = new BaseController();
+            return $baseController->sendError($exception->getMessage(), [], 405);
+        }
+        if ($exception instanceof InvalidArgumentException) {
+            $baseController = new BaseController();
+            return $baseController->sendError($exception->getMessage(), [], 400);
+        }
+        if ($exception instanceof AuthenticationException) {
+            $baseController = new BaseController();
+            return $baseController->sendError('Unauthenticated. You need to be logged to make that action', [], 401);
+        }
+
         return parent::render($request, $exception);
     }
 }
