@@ -32,7 +32,7 @@ class OptionsCorsResponse
             'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Methods' => $allow,
             'Access-Control-Max-Age' => 3600,
-            'Access-Control-Allow-Headers' => 'X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept',
+            'Access-Control-Allow-Headers' => 'X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept, Authorization, X-Token-Auth',
         ];
         return $response->withHeaders($headers);
     }
