@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
-    protected $fillable = ['description', 'latitude', 'longitude', 'url'];
+    protected $fillable = ['description', 'latitude', 'longitude', 'url', 'idSeries'];
 
     public function series()
     {

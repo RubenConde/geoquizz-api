@@ -194,6 +194,7 @@ class PhotoController extends BaseController
         //Validation for the parameters
         $validator = Validator::make($params, [
             'description' => 'required',
+            'idSeries' => 'numeric',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'url' => 'required|url',
