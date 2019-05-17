@@ -14,12 +14,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::group(['middleware' => ['json.response']], function () {
     Route::group(['middleware' => ['cors']], function () {
         Route::prefix('v1')->group(function () {
+            Route::get('/', function () {
+                $status = [
+                    "version" => "1.0",
+                    "online" => true
+                ];
+                $baseController = new BaseController();
+                return $baseController->sendResponse($status, 'GeoQuizz API Status');
+            });
+
             Route::middleware('auth:api')->get('/user', function (Request $request) {
                 $baseController = new BaseController();
-                return $baseController->sendResponse($request->user(),'User obtained');
+                return $baseController->sendResponse($request->user(), 'User obtained');
             });
 
 // public routes
