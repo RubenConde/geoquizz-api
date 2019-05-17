@@ -11,10 +11,20 @@
 |
 */
 
+use App\Http\Controllers\Api\BaseController;
+use Illuminate\Support\Facades\Route;
+
+
 Route::get('/', function () {
-    return view('welcome');
+    $status = [
+        "versions" => [
+            "v1" => [
+                "online" => true,
+                "deprecated" => false,
+                "maintenance" => false
+            ]
+        ]
+    ];
+    $baseController = new BaseController();
+    return $baseController->sendResponse($status, 'GeoQuizz API Status');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
