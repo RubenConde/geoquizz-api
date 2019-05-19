@@ -203,7 +203,7 @@ class GameController extends BaseController
 
         //Validation for the parameters
         $validator = Validator::make($params, [
-            'status' => 'numeric',
+            'status' => 'numeric|between:0,2',
             'score' => 'numeric',
             'player' => 'required',
             'idSeries' => 'required|numeric|exists:series,id',
@@ -213,7 +213,7 @@ class GameController extends BaseController
             //If the parameters doesnt make the validation, errors are obtained from $validator
             $errors = $validator->errors();
             //An error is sent
-            return $this->sendError('There was an error!', $errors, 400);
+            return $this->sendError('There was an error with the fields.', $errors, 400);
         }
 
         //If all the validations are right the new game is created
@@ -246,7 +246,7 @@ class GameController extends BaseController
             //If the parameters doesnt make the validation, errors are obtained from $validator
             $errors = $validator->errors();
             //An error is sent
-            return $this->sendError('There was an error!', $errors, 400);
+            return $this->sendError('There was an error with the fields.', $errors, 400);
         }
 
         //If all the validations are right the game is updated

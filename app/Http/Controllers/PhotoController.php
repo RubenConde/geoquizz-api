@@ -203,7 +203,7 @@ class PhotoController extends BaseController
             //If the parameters doesnt make the validation, errors are obtained from $validator
             $errors = $validator->errors();
             //An error is sent
-            return $this->sendError('There was an error!', $errors, 400);
+            return $this->sendError('There was an error with the fields.', $errors, 400);
         }
 
         //If all the validations are right the new photo is created
@@ -235,7 +235,7 @@ class PhotoController extends BaseController
             //If the parameters doesnt make the validation, errors are obtained from $validator
             $errors = $validator->errors();
             //An error is sent
-            return $this->sendError('There was an error!', $errors, 400);
+            return $this->sendError('There was an error with the fields.', $errors, 400);
         }
 
         //If all the validations are right the photo is updated
