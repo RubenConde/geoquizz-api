@@ -1,71 +1,137 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<p  align="center">
+<img  src="https://geoquizz.rubencondemag.info/img/world.28acccfd.png" width=200>
+</p>
+<p  align="center">
+<a  href="https://geoquizz-api.herokuapp.com/"><img  src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></a>
 </p>
 
-## About Laravel
+#  About GéoQuizz API
+GéoQuizz API is a RESTful API for the consumption of the game of the same name, made mainly in PHP using the Laravel framework in its version 5.8 and deployed in a heroku server for its use.
+## Endpoints
+### Games
+*  #### Table information
+    | Field        | Type      | Description                                                                             |
+    | ------------ | --------- | --------------------------------------------------------------------------------------- |
+    | id           | integer   | Game identifier                                                                         |
+    | player       | string    | Name of the player                                                                      |
+    | status       | integer   | Game status `0 = completed` `1 = started` `2 = completed but not visible in scoreboard` |
+    | score        | integer   | Game score                                                                              |
+    | idSeries     | integer   | Identifier of the series to which it belongs                                            |
+    | idDifficulty | integer   | Identifier of the difficulty to which it belongs                                        |
+    | created_at   | timestamp | Date the record was created                                                             |
+    | updated_at   | timestamp | Date the record was created                                                             |
+*  #### URL
+    `/api/v1/games`
+*  #### Method
+    `GET` `POST`
+*  #### URL Params
+	* ##### Required:
+    	`...`
+	* ##### Optional:
+		* `page = [numeric] | default = 1`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+            *Used to specify the page number you want to access.*
+		* `limit = [numeric] | default = 25`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+            *Used to specify the maximum number of elements on a page of the answer.*
+        * `fields = [alphanumeric] | default = id,player`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+            *Used to specify the fields to get from the list items, it will give one of them separated by a comma.*
+		* `sort = [alphabetic] | default = id`
 
-## Learning Laravel
+            *Used to specify a field by which to sort items in the list.*
+		* `order = [alphabetic] | default = asc`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+            *Used to specify a field by which to sort items in the list.*
+		* `filter = [alphanumeric] | default = null`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+            *Used to get a list filtered by a field giving a specific value. These are separated by a colon. e.g. = `field:operator:value`. Available operators: `=, !=, <, <=, >, >=`*
+*  #### Data Params
+   * ##### Required:
+        `player` `idSeries` `idDifficulty`
+   * ##### Optional:
+        `status` `score`
+*  #### Success Response:
+   * ##### `206 Partial Content`
+     * ##### Content: 
+        ```json
+        {
+        "success": true,
+        "type": "collection",
+        "message": "Games retrieved successfully.",
+        "data": {
+            "count": 25,
+            "games": [
+                {
+                    "game": {
+                        "id": 1,
+                        "player": "Raegan Carter"
+                    },
+                    "links": {
+                        "self": {
+                            "href": "http://127.0.0.1:8000/api/v1/games/1"
+                        }
+                    }
+                },
+                {
+                    "..."
+                }
+            ],
+            "links": {
+                "prev": {
+                    "href": "http://127.0.0.1:8000/api/v1/games?page=1"
+                },
+                "next": {
+                    "href": "http://127.0.0.1:8000/api/v1/games?page=2"
+                },
+                "first": {
+                    "href": "http://127.0.0.1:8000/api/v1/games?page=1"
+                },
+                "last": {
+                    "href": "http://127.0.0.1:8000/api/v1/games?page=2"
+                }
+            }
+        }
+*  #### Error Response:
+   * ##### `405 Method Not Allowed`
+     * ##### Content:
+        ```json 
+        {    
+        "success": false,
+        "type": "error",
+        "status": 405,
+        "message": "The PUT method is not supported for this route. Supported methods: GET, HEAD, POST."
+        }
+   * ##### `400 Bad Request`
+     * ##### Content:
+        ```json 
+        {
+            "success": false,
+            "type": "error",
+            "status": 400,
+            "message": "There was an error with the fields.",
+            "errors": {
+                "status": [
+                    "The status must be a number.",
+                    "The status must be between 0 and 2."
+                ],
+                "score": [
+                    "The score must be a number."
+                ],
+                "player": [
+                    "The player field is required."
+                ],
+                "idSeries": [
+                    "The id series must be a number.",
+                    "The id series field is required.",
+                    "The selected id series is invalid."
+                ],
+                "idDifficulty": [
+                    "The id difficulty must be a number.",
+                    "The id difficulty field is required.",
+                    "The selected id difficulty is invalid."
+                ]
+            }
+        }
+#  License
+[MIT license](https://opensource.org/licenses/MIT).
