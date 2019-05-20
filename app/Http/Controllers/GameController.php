@@ -239,6 +239,7 @@ class GameController extends BaseController
         $validator = Validator::make($params, [
             'status' => 'numeric',
             'score' => 'numeric',
+            'player' => 'filled',
             'idSeries' => 'numeric|exists:series,id',
             'idDifficulty' => 'numeric|exists:difficulties,id',
         ]);
