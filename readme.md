@@ -1,12 +1,19 @@
-<p  align="center"><img  src="https://geoquizz.rubencondemag.info/img/world.28acccfd.png" width=200></p>
+<p  align="center"><img  src="https://geoquizz.rubencondemag.info/img/world.28acccfd.png" width="200"></p>
 
 <p  align="center"><a  href="https://geoquizz-api.herokuapp.com/"><img  src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></a></p>
 
-- [About GéoQuizz API](#about-g%C3%A9oquizz-api)
-  - [Structure](#structure)
-    - [Games](#games)
-      - [Table information](#table-information)
+- [About GéoQuizz API](#about-g-oquizz-api)
+  * [Structure](#structure)
+    + [Authentication](#authentication)
       - [Endpoints](#endpoints)
+        - [`/register`](#register)
+        - [`/login`](#login)
+        - [`/logout`](#logout)
+    + [Games](#games)
+      - [Table information](#table-information)
+      - [Endpoints](#endpoints-1)
+        - [`/games`](#games-1)
+        - [`/games/{id}`](#gamesid)
 - [License](#license)
 
 # About GéoQuizz API
@@ -14,6 +21,130 @@
 GéoQuizz API is a RESTful API for the consumption of the game of the same name, made mainly in PHP using the Laravel framework in its version 5.8 and deployed in a heroku server for its use.
 
 ## Structure
+
+### Authentication
+
+#### Endpoints
+
+-   #### `/register`
+    -   ##### Methods
+        `POST`
+    -   ##### Data Params
+        -   ##### Required:
+            `name` `email` `password` `password_confirmation`
+        -   ##### Optional:
+            `...`
+    -   ##### Success Response:
+        -   ##### `200 OK`
+            ```json
+            {
+                "success": true,
+                "type": "resource",
+                "message": "Registration completed successfully",
+                "data": {
+                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSU..."
+                }
+            }
+            ```
+    -   ##### Error Response:
+        -   ##### `400 Bad Request`
+            ```json
+            {
+                "success": false,
+                "type": "error",
+                "status": 400,
+                "message": "There was an error!",
+                "errors": {
+                    "name": [
+                        "The name may not be greater than 255 characters.",
+                        "The name field is required."
+                    ],
+                    "email": [
+                        "The email may not be greater than 255 characters.",
+                        "The email has already been taken.",
+                        "The email must be a valid email address.",
+                        "The email field is required."
+                    ],
+                    "password": [
+                        "The password must be at least 8 characters.",
+                        "The password confirmation does not match.",
+                        "The password field is required."
+                    ]
+                }
+            }
+            ```
+-   #### `/login`
+    -   ##### Methods
+        `POST`
+    -   ##### Data Params
+        -   ##### Required:
+            `email` `password`
+        -   ##### Optional:
+            `...`
+    -   ##### Success Response:
+        -   ##### `200 OK`
+            ```json
+            {
+                "success": true,
+                "type": "resource",
+                "message": "Logged successfully",
+                "data": {
+                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSU..."
+                }
+            }
+            ```
+    -   ##### Error Response:
+        -   ##### `422 Unprocessable Entity`
+            ```json
+            {
+                "success": false,
+                "type": "error",
+                "status": 422,
+                "message": "User does not exist"
+            }            
+            ```
+        -   ##### `422 Unprocessable Entity`
+            ```json
+            {
+                "success": false,
+                "type": "error",
+                "status": 422,
+                "message": "Password missmatch"
+            }
+            ```
+-   #### `/logout`
+    -   ##### Methods
+        `GET`
+    -   ##### URL Params
+        -   ##### Required:
+            `...`
+        -   ##### Optional:
+            `...`
+    -   ##### Header Params
+        -   ##### Required:
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+        -   ##### Optional:
+            `...`
+    -   ##### Success Response:
+        -   ##### `200 OK`
+            ```json
+            {
+                "success": true,
+                "type": "resource",
+                "message": "You have been successfully logged out!",
+                "data": ""
+            }
+            ```
+    -   ##### Error Response:
+        -   ##### `401 Unauthorized`
+            ```json
+            {
+                "success": false,
+                "type": "error",
+                "status": 401,
+                "message": "Unauthenticated. You need to be logged to make this action"
+            }
+            ```
 
 ### Games
 
@@ -149,12 +280,20 @@ GéoQuizz API is a RESTful API for the consumption of the game of the same name,
         -   ##### Required:
             `...`
         -   ##### Optional:
-        -   `...`
+            `...`
     -   ##### Data Params
         -   ##### Required:
             `...`
         -   ##### Optional:
             `status` `score` `player` `idSeries` `idDifficulty`
+    -   ##### Header Params
+        -   ##### Required:
+            -   `@DELETE`
+                
+                `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+        -   ##### Optional:
+            `...`
+
     -   ##### Success Response:
         -   ##### `200 OK (GET)`
             ```json
