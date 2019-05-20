@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Http\Controllers\Api\BaseController;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use InvalidArgumentException;
@@ -70,7 +71,11 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof AuthenticationException) {
             $baseController = new BaseController();
-            return $baseController->sendError('Unauthenticated. You need to be logged to make that action', [], 401);
+            return $baseController->sendError('Unauthenticated. You need to be logged to make this action', [], 401);
+        }
+        if ($exception instanceof QueryException) {
+            $baseController = new BaseController();
+            return $baseController->sendError('There was a problem with the query', [], 400);
         }
 
         return parent::render($request, $exception);

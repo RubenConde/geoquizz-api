@@ -224,6 +224,7 @@ class DifficultyController extends BaseController
 
         //Validation for the parameters
         $validator = Validator::make($params, [
+            'name' => 'filled',
             'distance' => 'numeric',
             'numberOfPhotos' => 'numeric',
         ]);

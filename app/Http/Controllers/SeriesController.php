@@ -234,6 +234,7 @@ class SeriesController extends BaseController
 
         //Validation for the parameters
         $validator = Validator::make($params, [
+            'city' => 'filled',
             'latitude' => 'numeric',
             'longitude' => 'numeric',
             'zoom' => 'numeric',

@@ -26,15 +26,13 @@ Route::group(['middleware' => ['json.response']], function () {
                 $baseController = new BaseController();
                 return $baseController->sendResponse($status, 'GeoQuizz API Status');
             });
-
             Route::middleware('auth:api')->get('/user', function (Request $request) {
                 $baseController = new BaseController();
                 return $baseController->sendResponse($request->user(), 'User obtained');
             });
-
 // public routes
-            Route::post('/login', 'Api\AuthController@login')->name('login.api');
-            Route::post('/register', 'Api\AuthController@register')->name('register.api');
+            Route::post('login', 'Api\AuthController@login')->name('login.api');
+            Route::post('register', 'Api\AuthController@register')->name('register.api');
             Route::get('games', 'GameController@index')->name('games');
             Route::get('games/{game}', 'GameController@show')->name('game');
             Route::post('games', 'GameController@store')->name('createGame');
@@ -51,7 +49,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
 // private routes
             Route::middleware('auth:api')->group(function () {
-                Route::get('/logout', 'Api\AuthController@logout')->name('logout');
+                Route::get('logout', 'Api\AuthController@logout')->name('logout');
 
                 Route::delete('games/{game}', 'GameController@destroy')->name('deleteGame');
 
