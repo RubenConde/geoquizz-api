@@ -1,6 +1,6 @@
-title: Docs
-description: GéoQuizz API Documentation
-navbar-col: "transparent"
+title: GéoQuizz API
+description: Documentation
 theme: jekyll-theme-midnight
 author:
   name: Rubén Conde
+locale: en-US
