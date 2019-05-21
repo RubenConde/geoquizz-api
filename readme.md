@@ -1,6 +1,6 @@
-<p  align="center"><img  src="https://res.cloudinary.com/dxskfxwwo/image/upload/v1558424889/icons/world_kpar67.png"></p>
+<p  align="center"><img title="GéoQuizz Logo" src="https://res.cloudinary.com/dxskfxwwo/image/upload/v1558424889/icons/world_kpar67.png" alt="GéoQuizz Logo"></p>
 
-<p  align="center"><a  href="https://geoquizz-api.herokuapp.com/"><img  src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></a></p>
+<p  align="center"><img title="GéoQuizz Logo" src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></p>
 
 - [About GéoQuizz API](#about-g%C3%A9oquizz-api)
   - [Authentication](#authentication)
@@ -36,9 +36,13 @@
 
 The idea of GéoQuizz API comes from a school project in which the objective is to feed a game where users could select a specific place to then get photos of important sites of it and locate them on a map. This API is created mainly for this reason, however, the structure of it can be used as a basis for future projects.
 
-GéoQuizz API is a RESTful API for the consumption of the game of the same name, made mainly in PHP using the Laravel framework in its version 5.8. The structure of the GeoQuizz API database is MySQL, in the section of each table you can see the information concerning it as well as its fields.
+GéoQuizz API is a RESTful API for the consumption of the game of the same name, made mainly in PHP using the [Laravel framework](https://laravel.com/) in its version 5.8. The structure of the GeoQuizz API database is MySQL, in the section of each table you can see the information concerning it as well as its fields.
 
-At the moment the project is hosted on the Heroku server, in the future will be launched on a server of its own. The basic structure of the url is: `https://geoquizz-api.herokuapp.com/api/v1/:endpoint`
+At the moment the project is hosted on the [Heroku](https://www.heroku.com/) server, in the future will be launched on a server of its own. The basic structure of the url is:
+
+<p align="center">
+<code>https://geoquizz-api.herokuapp.com/api/v1/:endpoint</code>
+</p>
 
 ## Authentication
 
