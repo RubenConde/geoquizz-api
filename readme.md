@@ -3,33 +3,33 @@
 <p  align="center"><a  href="https://geoquizz-api.herokuapp.com/"><img  src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></a></p>
 
 -   [About GéoQuizz API](#about-g%C3%A9oquizz-api)
-    -   [Structure](#structure)
-        -   [Authentication](#authentication)
-            -   [Endpoints](#endpoints)
-                -   [`/register`](#register)
-                -   [`/login`](#login)
-                -   [`/logout`](#logout)
-                -   [`/user`](#user)
-        -   [Games](#games)
-            -   [Table information](#table-information)
-            -   [Endpoints](#endpoints-1)
-                -   [`/games`](#games)
-                -   [`/games/:id`](#gamesid)
+    -   [Authentication](#authentication)
+        -   [Endpoints](#endpoints)
+            -   [`/register`](#register)
+            -   [`/login`](#login)
+            -   [`/logout`](#logout)
+            -   [`/user`](#user)
+    -   [Games](#games)
+        -   [Table information](#table-information)
+        -   [Endpoints](#endpoints-1)
+            -   [`/games`](#games)
+            -   [`/games/:id`](#gamesid)
         -   [Difficulties](#difficulties)
-            -   [Table information](#table-information-1)
-            -   [Endpoints](#endpoints-2)
-                -   [`/difficulties`](#difficulties)
-                -   [`/difficulties/:id`](#difficultiesid)
+        -   [Table information](#table-information-1)
+        -   [Endpoints](#endpoints-2)
+            -   [`/difficulties`](#difficulties)
+            -   [`/difficulties/:id`](#difficultiesid)
         -   [Series](#series)
-            -   [Table information](#table-information-2)
-            -   [Endpoints](#endpoints-3)
-                -   [`/series`](#series)
-                -   [`/series/:id`](#seriesid)
+        -   [Table information](#table-information-2)
+        -   [Endpoints](#endpoints-3)
+            -   [`/series`](#series)
+            -   [`/series/:id`](#seriesid)
         -   [Photos](#photos)
-            -   [Table information](#table-information-3)
-            -   [Endpoints](#endpoints-4)
-                -   [`/photos`](#photos)
-                -   [`/photos/:id`](#photosid)
+        -   [Table information](#table-information-3)
+        -   [Endpoints](#endpoints-4)
+            -   [`/photos`](#photos)
+            -   [`/photos/:id`](#photosid)
+-   [Notes](#notes)
 -   [License](#license)
 
 # About GéoQuizz API
@@ -40,34 +40,32 @@ GéoQuizz API is a RESTful API for the consumption of the game of the same name,
 
 At the moment the project is hosted on the Heroku server, in the future will be launched on a server of its own. The basic structure of the url is: `https://geoquizz-api.herokuapp.com/api/v1/:endpoint`
 
-## Structure
+## Authentication
 
-### Authentication
+### Endpoints
 
-#### Endpoints
-
-##### `/register`
+#### `/register`
 
 Endpoint to register a new user
 
--   ##### Method
+-   #### Method
     `POST`
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `name` `email` `password` `password_confirmation`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `200 OK`
         ```json
         {
@@ -79,7 +77,7 @@ Endpoint to register a new user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
     -   ##### `400 Bad Request`
         ```json
         {
@@ -107,28 +105,28 @@ Endpoint to register a new user
         }
         ```
 
-##### `/login`
+#### `/login`
 
 Endpoint to log in to the system
 
--   ##### Method
+-   #### Method
     `POST`
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `email` `password`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `200 OK`
         ```json
         {
@@ -140,7 +138,7 @@ Endpoint to log in to the system
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
     -   ##### `422 Unprocessable Entity`
         ```json
         {
@@ -160,28 +158,28 @@ Endpoint to log in to the system
         }
         ```
 
-##### `/logout`
+#### `/logout`
 
 Endpoint to log out of the system
 
--   ##### Methods
+-   #### Methods
     `GET`
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
     -   ##### Required:
-        `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+        `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
     -   ##### Optional:
         `...`
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `200 OK`
         ```json
         {
@@ -191,7 +189,7 @@ Endpoint to log out of the system
             "data": ""
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
     -   ##### `401 Unauthorized`
         ```json
         {
@@ -202,28 +200,28 @@ Endpoint to log out of the system
         }
         ```
 
-##### `/user`
+#### `/user`
 
 Endpoint to get information from the logged-in user
 
--   ##### Methods
+-   #### Methods
     `GET`
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
     -   ##### Required:
-        `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+        `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
     -   ##### Optional:
         `...`
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `200 OK`
         ```json
         {
@@ -240,7 +238,7 @@ Endpoint to get information from the logged-in user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
     -   ##### `401 Unauthorized`
         ```json
         {
@@ -251,9 +249,9 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-### Games
+## Games
 
-#### Table information
+### Table information
 
 | Field        | Type    | Description                                                                               |
 | ------------ | ------- | ----------------------------------------------------------------------------------------- |
@@ -264,17 +262,17 @@ Endpoint to get information from the logged-in user
 | idSeries     | integer | Identifier of the series to which it belongs                                              |
 | idDifficulty | integer | Identifier of the difficulty to which it belongs                                          |
 
-#### Endpoints
+### Endpoints
 
-##### `/games`
+#### `/games`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint for a list of games registered in the database</small>
 
     `POST` <small>Endpoint to register a new game in the database</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
@@ -290,17 +288,17 @@ Endpoint to get information from the logged-in user
             <small>_Used to specify a direction by which to sort items in the list._</small>
         -   ##### `filter = [alphanumeric] | default = null`
             <small>_Used to get a list filtered by a field giving a specific value. These are separated by a colon. e.g. = `field:operator:value`. Available operators: `=, !=, <, <=, >, >=`_</small>
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `player` `idSeries` `idDifficulty`
     -   ##### Optional:
         `status` `score`
--   ##### Headers
+-   #### Headers
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `201 Created (POST)`
         ```json
         {
@@ -360,7 +358,7 @@ Endpoint to get information from the logged-in user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
     -   ##### `400 Bad Request (POST)`
         ```json
         {
@@ -389,9 +387,9 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-##### `/games/:id`
+#### `/games/:id`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint to get information about a specific game</small>
 
@@ -399,28 +397,28 @@ Endpoint to get information from the logged-in user
 
     `DELETE` <small>Endpoint to remove a specific game</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `status` `score` `player` `idSeries` `idDifficulty`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `DELETE`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
 
     -   ##### `200 OK (GET)`
         ```json
@@ -493,7 +491,7 @@ Endpoint to get information from the logged-in user
 
         ```
 
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (PUT)`
 
@@ -545,7 +543,7 @@ Endpoint to get information from the logged-in user
 
 ### Difficulties
 
-#### Table information
+### Table information
 
 | Field          | Type    | Description                                         |
 | -------------- | ------- | --------------------------------------------------- |
@@ -554,17 +552,17 @@ Endpoint to get information from the logged-in user
 | distance       | float   | Distance of between the place and the user position |
 | numberOfPhotos | integer | Quantity of photos to show                          |
 
-#### Endpoints
+### Endpoints
 
-##### `/difficulties`
+#### `/difficulties`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint for a list of difficulties registered in the database</small>
 
     `POST` <small>Endpoint to register a new difficulty in the database</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
@@ -580,23 +578,23 @@ Endpoint to get information from the logged-in user
             <small>_Used to specify a direction by which to sort items in the list._</small>
         -   ##### `filter = [alphanumeric] | default = null`
             <small>_Used to get a list filtered by a field giving a specific value. These are separated by a colon. e.g. = `field:operator:value`. Available operators: `=, !=, <, <=, >, >=`_</small>
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `name` `distance` `numberOfPhotos`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `POST`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `201 Created (POST)`
         ```json
         {
@@ -654,7 +652,7 @@ Endpoint to get information from the logged-in user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (POST)`
         ```json
@@ -687,9 +685,9 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-##### `/difficulties/:id`
+#### `/difficulties/:id`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint to get information about a specific difficulty</small>
 
@@ -697,28 +695,28 @@ Endpoint to get information from the logged-in user
 
     `DELETE` <small>Endpoint to remove a specific difficulty</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `name` `distance` `numberOfPhotos`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `DELETE | PUT`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
 
     -   ##### `200 OK (GET)`
         ```json
@@ -774,7 +772,7 @@ Endpoint to get information from the logged-in user
 
         ```
 
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (PUT)`
 
@@ -815,7 +813,7 @@ Endpoint to get information from the logged-in user
 
 ### Series
 
-#### Table information
+### Table information
 
 | Field     | Type    | Description                                   |
 | --------- | ------- | --------------------------------------------- |
@@ -825,17 +823,17 @@ Endpoint to get information from the logged-in user
 | longitude | float   | Longitude geographic of the city              |
 | zoom      | integer | Zoom of the map (usually a parameter of maps) |
 
-#### Endpoints
+### Endpoints
 
-##### `/series`
+#### `/series`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint for a list of the series registered in the database</small>
 
     `POST` <small>Endpoint to register a new series in the database</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
@@ -851,23 +849,23 @@ Endpoint to get information from the logged-in user
             <small>_Used to specify a direction by which to sort items in the list._</small>
         -   ##### `filter = [alphanumeric] | default = null`
             <small>_Used to get a list filtered by a field giving a specific value. These are separated by a colon. e.g. = `field:operator:value`. Available operators: `=, !=, <, <=, >, >=`_</small>
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `city` `latitude` `longitude` `zoom`
     -   ##### Optional:
         `...`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `POST`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `201 Created (POST)`
         ```json
         {
@@ -926,7 +924,7 @@ Endpoint to get information from the logged-in user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (POST)`
         ```json
@@ -954,9 +952,9 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-##### `/series/:id`
+#### `/series/:id`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint to get information about a specific series</small>
 
@@ -964,28 +962,28 @@ Endpoint to get information from the logged-in user
 
     `DELETE` <small>Endpoint to remove a specific series</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `city` `latitude` `longitde` `zoom`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `DELETE | PUT`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
 
     -   ##### `200 OK (GET)`
         ```json
@@ -1056,7 +1054,7 @@ Endpoint to get information from the logged-in user
 
         ```
 
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (PUT)`
 
@@ -1099,7 +1097,7 @@ Endpoint to get information from the logged-in user
 
 ### Photos
 
-#### Table information
+### Table information
 
 | Field       | Type    | Description                                   |
 | ----------- | ------- | --------------------------------------------- |
@@ -1110,17 +1108,17 @@ Endpoint to get information from the logged-in user
 | url         | string  | Url of the image                              |
 | idSeries    | integer | Zoom of the map (usually a parameter of maps) |
 
-#### Endpoints
+### Endpoints
 
-##### `/photos`
+#### `/photos`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint for a list of photos registered in the database</small>
 
     `POST` <small>Endpoint to register a new photo in the database</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
@@ -1136,23 +1134,23 @@ Endpoint to get information from the logged-in user
             <small>_Used to specify a direction by which to sort items in the list._</small>
         -   ##### `filter = [alphanumeric] | default = null`
             <small>_Used to get a list filtered by a field giving a specific value. These are separated by a colon. e.g. = `field:operator:value`. Available operators: `=, !=, <, <=, >, >=`_</small>
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `description` `latitude` `longitude` `zoom`
     -   ##### Optional:
         `idSeries`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `POST`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
     -   ##### `201 Created (POST)`
         ```json
         {
@@ -1212,7 +1210,7 @@ Endpoint to get information from the logged-in user
             }
         }
         ```
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (POST)`
         ```json
@@ -1253,9 +1251,9 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-##### `/photos/:id`
+#### `/photos/:id`
 
--   ##### Methods
+-   #### Methods
 
     `GET` <small>Endpoint to get information about a specific photo</small>
 
@@ -1263,28 +1261,28 @@ Endpoint to get information from the logged-in user
 
     `DELETE` <small>Endpoint to remove a specific photo</small>
 
--   ##### URL Params
+-   #### URL Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `...`
--   ##### Data Params
+-   #### Data Params
     -   ##### Required:
         `...`
     -   ##### Optional:
         `description` `latitude` `longitde` `url` `idSeries`
--   ##### Headers
+-   #### Headers
 
     -   ##### Required:
 
         -   `DELETE | PUT`
 
-            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (token from login)`
+            `Authorization` : `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJS... (login's token)`
 
     -   ##### Optional:
         `...`
 
--   ##### Success Response:
+-   #### Success Response:
 
     -   ##### `200 OK (GET)`
         ```json
@@ -1346,7 +1344,7 @@ Endpoint to get information from the logged-in user
 
         ```
 
--   ##### Error Response:
+-   #### Error Response:
 
     -   ##### `400 Bad Request (PUT)`
 
