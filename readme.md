@@ -2,35 +2,35 @@
 
 <p  align="center"><a  href="https://geoquizz-api.herokuapp.com/"><img  src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></a></p>
 
--   [About GéoQuizz API](#about-g%C3%A9oquizz-api)
-    -   [Authentication](#authentication)
-        -   [Endpoints](#endpoints)
-            -   [`/register`](#register)
-            -   [`/login`](#login)
-            -   [`/logout`](#logout)
-            -   [`/user`](#user)
-    -   [Games](#games)
-        -   [Table information](#table-information)
-        -   [Endpoints](#endpoints-1)
-            -   [`/games`](#games)
-            -   [`/games/:id`](#gamesid)
-        -   [Difficulties](#difficulties)
-        -   [Table information](#table-information-1)
-        -   [Endpoints](#endpoints-2)
-            -   [`/difficulties`](#difficulties)
-            -   [`/difficulties/:id`](#difficultiesid)
-        -   [Series](#series)
-        -   [Table information](#table-information-2)
-        -   [Endpoints](#endpoints-3)
-            -   [`/series`](#series)
-            -   [`/series/:id`](#seriesid)
-        -   [Photos](#photos)
-        -   [Table information](#table-information-3)
-        -   [Endpoints](#endpoints-4)
-            -   [`/photos`](#photos)
-            -   [`/photos/:id`](#photosid)
--   [Notes](#notes)
--   [License](#license)
+- [About GéoQuizz API](#about-g%C3%A9oquizz-api)
+  - [Authentication](#authentication)
+    - [Endpoints](#endpoints)
+      - [`/register`](#register)
+      - [`/login`](#login)
+      - [`/logout`](#logout)
+      - [`/user`](#user)
+  - [Games](#games)
+    - [Table information](#table-information)
+    - [Endpoints](#endpoints-1)
+      - [`/games`](#games)
+      - [`/games/:id`](#gamesid)
+  - [Difficulties](#difficulties)
+    - [Table information](#table-information-1)
+    - [Endpoints](#endpoints-2)
+      - [`/difficulties`](#difficulties)
+      - [`/difficulties/:id`](#difficultiesid)
+  - [Series](#series)
+    - [Table information](#table-information-2)
+    - [Endpoints](#endpoints-3)
+      - [`/series`](#series)
+      - [`/series/:id`](#seriesid)
+  - [Photos](#photos)
+    - [Table information](#table-information-3)
+    - [Endpoints](#endpoints-4)
+      - [`/photos`](#photos)
+      - [`/photos/:id`](#photosid)
+- [Notes](#notes)
+- [License](#license)
 
 # About GéoQuizz API
 
@@ -541,7 +541,7 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-### Difficulties
+## Difficulties
 
 ### Table information
 
@@ -811,7 +811,7 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-### Series
+## Series
 
 ### Table information
 
@@ -1095,7 +1095,7 @@ Endpoint to get information from the logged-in user
         }
         ```
 
-### Photos
+## Photos
 
 ### Table information
 
