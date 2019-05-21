@@ -21,7 +21,9 @@ Route::group(['middleware' => ['json.response']], function () {
             Route::get('/', function () {
                 $status = [
                     "version" => "1.0",
-                    "online" => true
+                    "online" => true,
+                    "maintenance" => false,
+                    "deprecated" => false
                 ];
                 $baseController = new BaseController();
                 return $baseController->sendResponse($status, 'GeoQuizz API Status');
