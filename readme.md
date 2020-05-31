@@ -1,6 +1,5 @@
 <p  align="center"><img title="GéoQuizz Logo" src="https://res.cloudinary.com/dxskfxwwo/image/upload/v1558424889/icons/world_kpar67.png" alt="GéoQuizz Logo"></p>
 
-<p  align="center"><img title="GéoQuizz Logo" src="https://heroku-badge.herokuapp.com/?app=geoquizz-api"  alt="Build Status"></p>
 
 - [About GéoQuizz API](#about-g%C3%A9oquizz-api)
   - [Authentication](#authentication)
